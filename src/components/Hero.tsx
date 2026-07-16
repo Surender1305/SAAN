@@ -11,7 +11,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gray-950">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-white">
       {/* Animated Background Orbs */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl animate-morph" />
@@ -60,7 +60,7 @@ export default function Hero() {
 
           {/* Main heading with staggered animation */}
           <h1
-            className={`text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 transition-all duration-1000 delay-200 ${
+            className={`text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-6 transition-all duration-1000 delay-200 ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
@@ -73,7 +73,7 @@ export default function Hero() {
 
           {/* Subtitle */}
           <p
-            className={`max-w-2xl mx-auto text-lg sm:text-xl text-gray-400 mb-10 leading-relaxed transition-all duration-1000 delay-400 ${
+            className={`max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 mb-10 leading-relaxed transition-all duration-1000 delay-400 ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
@@ -100,7 +100,7 @@ export default function Hero() {
             </a>
             <a
               href="#contact"
-              className="magnetic-btn group flex items-center gap-2 px-8 py-4 border border-gray-700 text-gray-300 font-semibold rounded-xl hover:border-blue-500/50 hover:text-white hover:bg-white/5 transition-all hover:-translate-y-1"
+              className="magnetic-btn group flex items-center gap-2 px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-blue-500/50 hover:text-gray-900 hover:bg-gray-900/5 transition-all hover:-translate-y-1"
             >
               Get In Touch
             </a>

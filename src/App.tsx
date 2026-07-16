@@ -10,7 +10,7 @@ import MouseFollower from './components/MouseFollower';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       <MouseFollower />
       {/* Background particles */}
       <Particles />

@@ -101,7 +101,7 @@ export default function Particles() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `hsla(220, 70%, 60%, ${0.08 * (1 - dist2 / 120)})`;
+            ctx.strokeStyle = `hsla(220, 70%, 60%, ${0.2 * (1 - dist2 / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

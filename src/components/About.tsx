@@ -8,7 +8,7 @@ export default function About() {
   const valuesReveal = useScrollReveal({ threshold: 0.2 });
 
   return (
-    <section id="about" className="py-24 bg-gray-950 relative overflow-hidden">
+    <section id="about" className="py-24 bg-white relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-3xl -translate-y-1/2" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-600/5 rounded-full blur-3xl translate-y-1/2" />
@@ -23,17 +23,17 @@ export default function About() {
             className={`reveal-left ${leftReveal.isVisible ? 'visible' : ''}`}
           >
             <span className="text-blue-400 text-sm font-semibold tracking-wider uppercase">About Us</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mt-3 mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mt-3 mb-6">
               Building the Future,
               <br />
               <span className="gradient-text-animated">One Line at a Time</span>
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed mb-6">
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
               SAAN Solutions is a forward-thinking software development company founded in 2019.
               We specialize in turning ambitious ideas into reality through cutting-edge technology
               and exceptional engineering talent.
             </p>
-            <p className="text-gray-400 text-lg leading-relaxed mb-8">
+            <p className="text-gray-600 text-lg leading-relaxed mb-8">
               Our team of 40+ skilled developers, designers, and strategists has successfully
               delivered 50+ projects across healthcare, fintech, e-commerce, education, and IoT
               sectors. We pride ourselves on building long-term partnerships with our clients.
@@ -52,11 +52,11 @@ export default function About() {
               ].map((item) => (
                 <TiltCard
                   key={item.title}
-                  className="p-4 rounded-xl bg-white/[0.03] border border-white/10 hover-lift border-glow transition-all duration-300 group"
+                  className="p-4 rounded-xl bg-white/[0.03] border border-gray-900/10 hover-lift border-glow transition-all duration-300 group"
                   intensity={12}
                 >
                   <item.icon className={`w-6 h-6 ${item.color} mb-2 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`} />
-                  <h4 className="text-white font-semibold text-sm mb-1">{item.title}</h4>
+                  <h4 className="text-gray-900 font-semibold text-sm mb-1">{item.title}</h4>
                   <p className="text-gray-500 text-xs">{item.desc}</p>
                 </TiltCard>
               ))}
@@ -72,8 +72,8 @@ export default function About() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-blue-600/20 via-purple-600/10 to-transparent rounded-full blur-3xl animate-morph -z-10" />
             
             {/* Main image */}
-            <TiltCard className="w-4/5 h-[320px] sm:h-[400px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-blue-900/20 relative z-10" intensity={5}>
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent z-10" />
+            <TiltCard className="w-4/5 h-[320px] sm:h-[400px] rounded-3xl overflow-hidden border border-gray-900/10 shadow-2xl shadow-blue-900/20 relative z-10" intensity={5}>
+              <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent z-10" />
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
                 alt="Team collaboration"

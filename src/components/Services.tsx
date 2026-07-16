@@ -52,7 +52,7 @@ export default function Services() {
   const gridReveal = useScrollReveal({ threshold: 0.1 });
 
   return (
-    <section id="services" className="py-24 bg-gray-950 relative overflow-hidden">
+    <section id="services" className="py-24 bg-white relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:64px_64px]" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/5 rounded-full blur-3xl" />
@@ -68,10 +68,10 @@ export default function Services() {
           <span className="text-blue-400 text-sm font-semibold tracking-wider uppercase inline-block">
             What We Offer
           </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mt-3 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mt-3 mb-4">
             Our <span className="gradient-text-animated">Services</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-gray-400 text-lg">
+          <p className="max-w-2xl mx-auto text-gray-600 text-lg">
             End-to-end software solutions designed to accelerate your business growth and digital transformation.
           </p>
         </div>
@@ -84,18 +84,18 @@ export default function Services() {
           {services.map((service) => (
             <TiltCard
               key={service.title}
-              className={`group p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300 hover-lift border-glow`}
+              className={`group p-8 rounded-2xl bg-white/[0.03] border border-gray-900/10 hover:border-gray-900/20 hover:bg-white/[0.06] transition-all duration-300 hover-lift border-glow`}
               intensity={8}
             >
               <div
                 className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg ${service.shadowColor}`}
               >
-                <service.icon className="w-7 h-7 text-white" />
+                <service.icon className="w-7 h-7 text-gray-900" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-400 transition-colors duration-300">
                 {service.title}
               </h3>
-              <p className="text-gray-400 leading-relaxed">{service.description}</p>
+              <p className="text-gray-600 leading-relaxed">{service.description}</p>
               {/* Animated underline */}
               <div className="mt-4 h-0.5 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
             </TiltCard>

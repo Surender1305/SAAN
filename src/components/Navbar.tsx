@@ -40,7 +40,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-gray-950/95 backdrop-blur-xl border-b border-gray-800/50 shadow-lg shadow-black/20'
+          ? 'bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-lg shadow-black/20'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -51,7 +51,7 @@ export default function Navbar() {
             <img 
               src="/logo.png" 
               alt="SAAN Solutions Logo" 
-              className="h-[100px] w-auto object-contain -my-4 group-hover:scale-105 transition-transform duration-300" 
+              className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
             />
           </a>
 
@@ -64,7 +64,7 @@ export default function Navbar() {
                 className={`relative px-4 py-2 text-sm rounded-lg transition-all duration-300 magnetic-btn ${
                   activeSection === link.href.slice(1)
                     ? 'text-blue-400'
-                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                    : 'text-gray-700 hover:text-gray-900 hover:bg-gray-900/5'
                 }`}
               >
                 {link.label}
@@ -79,7 +79,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-gray-300 hover:text-white p-2 transition-colors"
+            className="md:hidden text-gray-700 hover:text-gray-900 p-2 transition-colors"
           >
             <div className={`transition-transform duration-300 ${mobileOpen ? 'rotate-90' : 'rotate-0'}`}>
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -90,7 +90,7 @@ export default function Navbar() {
 
       {/* Mobile menu with slide animation */}
       <div
-        className={`md:hidden bg-gray-950/98 backdrop-blur-xl border-t border-gray-800/50 overflow-hidden transition-all duration-300 ${
+        className={`md:hidden bg-white/98 backdrop-blur-xl border-t border-gray-200/50 overflow-hidden transition-all duration-300 ${
           mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
@@ -103,7 +103,7 @@ export default function Navbar() {
               className={`block px-4 py-3 rounded-lg transition-all duration-300 ${
                 activeSection === link.href.slice(1)
                   ? 'text-blue-400 bg-blue-500/10'
-                  : 'text-gray-300 hover:text-white hover:bg-white/5'
+                  : 'text-gray-700 hover:text-gray-900 hover:bg-gray-900/5'
               }`}
               style={{
                 transitionDelay: mobileOpen ? `${i * 50}ms` : '0ms',
