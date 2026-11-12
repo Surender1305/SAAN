@@ -27,7 +27,7 @@ export default function Particles() {
         vy: (Math.random() - 0.5) * 0.3,
         size: Math.random() * 2 + 0.5,
         opacity: Math.random() * 0.5 + 0.1,
-        hue: Math.random() * 60 + 200, // blue-purple range
+        hue: Math.random() > 0.4 ? 27 : 218, // brand orange (27) or brand navy (218)
       });
     }
     return particles;
@@ -87,7 +87,9 @@ export default function Particles() {
         // Draw particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${p.hue}, 70%, 60%, ${p.opacity})`;
+        ctx.fillStyle = p.hue === 27
+          ? `hsla(27, 100%, 50%, ${p.opacity})`
+          : `hsla(218, 95%, 25%, ${p.opacity * 0.8})`;
         ctx.fill();
 
         // Draw connections
@@ -101,7 +103,9 @@ export default function Particles() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `hsla(220, 70%, 60%, ${0.2 * (1 - dist2 / 120)})`;
+            ctx.strokeStyle = p.hue === 27
+              ? `hsla(27, 95%, 50%, ${0.15 * (1 - dist2 / 120)})`
+              : `hsla(218, 90%, 25%, ${0.12 * (1 - dist2 / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

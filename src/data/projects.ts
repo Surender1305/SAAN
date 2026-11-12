@@ -24,7 +24,7 @@ export const defaultProjects: Project[] = [
     image: '/MobiAsset.png',
     clientName: 'Internal Product',
     year: '2024',
-    liveUrl: '/DeviceManagerProductWebsite-main/index.html',
+    liveUrl: 'https://mobiasset.reliantsoftwaresolutions.com/',
   },
   {
     id: '2',
@@ -37,7 +37,7 @@ export const defaultProjects: Project[] = [
     image: '/Inspectra.png',
     clientName: 'Internal Product',
     year: '2024',
-    liveUrl: '/SafetyMonitorProductWebsite-main/index.html',
+    liveUrl: 'https://inspectra.reliantsoftwaresolutions.com/',
   },
   {
     id: '3',
@@ -50,6 +50,6 @@ export const defaultProjects: Project[] = [
     image: '/asset guard.png',
     clientName: 'Internal Product',
     year: '2024',
-    liveUrl: '/AssetManagerProductWebsite-main/index.html',
+    liveUrl: 'https://assetguard.reliantsoftwaresolutions.com/',
   }
 ];

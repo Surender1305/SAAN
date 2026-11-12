@@ -50,7 +50,7 @@ export default function Navbar() {
           <a href="#home" className="flex items-center gap-2 group">
             <img 
               src="/logo.png" 
-              alt="SAAN Solutions Logo" 
+              alt="Reliant Software Solutions Logo" 
               className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
             />
           </a>
@@ -63,14 +63,14 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative px-4 py-2 text-sm rounded-lg transition-all duration-300 magnetic-btn ${
                   activeSection === link.href.slice(1)
-                    ? 'text-blue-400'
+                    ? 'text-[#fd7200] font-semibold'
                     : 'text-gray-700 hover:text-gray-900 hover:bg-gray-900/5'
                 }`}
               >
                 {link.label}
                 {/* Active dot indicator */}
                 {activeSection === link.href.slice(1) && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full animate-scale-in" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#fd7200] rounded-full animate-scale-in" />
                 )}
               </a>
             ))}
@@ -102,7 +102,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
               className={`block px-4 py-3 rounded-lg transition-all duration-300 ${
                 activeSection === link.href.slice(1)
-                  ? 'text-blue-400 bg-blue-500/10'
+                  ? 'text-[#fd7200] bg-orange-500/10 font-semibold'
                   : 'text-gray-700 hover:text-gray-900 hover:bg-gray-900/5'
               }`}
               style={{

@@ -97,7 +97,7 @@ export default function MouseFollower() {
           transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
       >
-        <div className="w-10 h-10 rounded-full border border-blue-400/50" />
+        <div className="w-10 h-10 rounded-full border border-[#fd7200]/60" />
       </div>
 
       {/* Outer glow aura */}
@@ -110,9 +110,9 @@ export default function MouseFollower() {
         }}
       >
         <div
-          className="w-[300px] h-[300px] rounded-full opacity-[0.07]"
+          className="w-[300px] h-[300px] rounded-full opacity-[0.08]"
           style={{
-            background: 'radial-gradient(circle, rgba(96,165,250,1) 0%, rgba(147,51,234,0.5) 40%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(253,114,0,0.85) 0%, rgba(1,31,75,0.45) 45%, transparent 70%)',
           }}
         />
       </div>

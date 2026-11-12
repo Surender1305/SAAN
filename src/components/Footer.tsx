@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200 py-12 relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-600/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#011f4b]/5 rounded-full blur-3xl" />
 
       <div
         ref={footerReveal.ref}
@@ -22,8 +22,8 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-4 group">
               <img 
                 src="/logo.png" 
-                alt="SAAN Solutions Logo" 
-                className="h-[100px] w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
+                alt="Reliant Software Solutions Logo" 
+                className="h-[80px] w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
               />
             </div>
             <p className="text-gray-600 max-w-sm leading-relaxed">
@@ -38,7 +38,7 @@ export default function Footer() {
                 <a
                   key={link}
                   href={`#${link.toLowerCase()}`}
-                  className="block text-gray-600 hover:text-blue-400 hover:translate-x-1 text-sm transition-all duration-300"
+                  className="block text-gray-600 hover:text-[#fd7200] hover:translate-x-1 text-sm transition-all duration-300"
                 >
                   {link}
                 </a>
@@ -51,7 +51,7 @@ export default function Footer() {
               {['Web Development', 'Mobile Apps', 'Cloud Solutions', 'AI & ML', 'MVP Development'].map((s) => (
                 <span
                   key={s}
-                  className="block text-gray-600 text-sm hover:text-gray-700 transition-colors duration-300"
+                  className="block text-gray-600 text-sm hover:text-gray-900 transition-colors duration-300"
                 >
                   {s}
                 </span>
@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-gray-200 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} SAAN Solutions. All rights reserved.
+            © {new Date().getFullYear()} Reliant Software Solutions. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             {['Privacy Policy', 'Terms of Service'].map((item) => (
@@ -72,7 +72,7 @@ export default function Footer() {
             {/* Scroll to top button */}
             <button
               onClick={scrollToTop}
-              className="w-10 h-10 rounded-full bg-gray-900/5 border border-gray-900/10 flex items-center justify-center text-gray-600 hover:text-white hover:bg-blue-600/20 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300 magnetic-btn"
+              className="w-10 h-10 rounded-full bg-gray-900/5 border border-gray-900/10 flex items-center justify-center text-gray-600 hover:text-[#fd7200] hover:bg-orange-500/10 hover:border-[#fd7200]/30 hover:-translate-y-1 transition-all duration-300 magnetic-btn"
             >
               <ArrowUp className="w-4 h-4" />
             </button>

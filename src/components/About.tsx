@@ -10,10 +10,10 @@ export default function About() {
   return (
     <section id="about" className="py-24 bg-white relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-3xl -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-600/5 rounded-full blur-3xl translate-y-1/2" />
-      <div className="absolute top-1/3 right-10 w-16 h-16 border border-blue-500/10 rounded-xl rotate-45 animate-float" />
-      <div className="absolute bottom-1/4 left-10 w-12 h-12 border border-purple-500/10 rounded-full animate-float-delayed" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#011f4b]/5 rounded-full blur-3xl -translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#fd7200]/5 rounded-full blur-3xl translate-y-1/2" />
+      <div className="absolute top-1/3 right-10 w-16 h-16 border border-[#011f4b]/10 rounded-xl rotate-45 animate-float" />
+      <div className="absolute bottom-1/4 left-10 w-12 h-12 border border-[#fd7200]/15 rounded-full animate-float-delayed" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -22,14 +22,14 @@ export default function About() {
             ref={leftReveal.ref}
             className={`reveal-left ${leftReveal.isVisible ? 'visible' : ''}`}
           >
-            <span className="text-blue-400 text-sm font-semibold tracking-wider uppercase">About Us</span>
+            <span className="text-[#fd7200] text-sm font-semibold tracking-wider uppercase">About Us</span>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mt-3 mb-6">
               Building the Future,
               <br />
               <span className="gradient-text-animated">One Line at a Time</span>
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              SAAN Solutions is a forward-thinking software development company founded in 2019.
+              Reliant Software Solutions is a forward-thinking software development company founded in 2019.
               We specialize in turning ambitious ideas into reality through cutting-edge technology
               and exceptional engineering talent.
             </p>
@@ -45,10 +45,10 @@ export default function About() {
               className={`grid grid-cols-2 gap-4 stagger-children ${valuesReveal.isVisible ? 'visible' : ''}`}
             >
               {[
-                { icon: Target, title: 'Mission-Driven', desc: 'Focused on delivering measurable business impact', color: 'text-blue-400' },
-                { icon: Lightbulb, title: 'Innovation First', desc: 'Leveraging latest technologies and best practices', color: 'text-yellow-400' },
-                { icon: Rocket, title: 'Fast Delivery', desc: 'Agile methodology for rapid, iterative development', color: 'text-purple-400' },
-                { icon: Heart, title: 'Client-Centric', desc: 'Your success is our primary metric', color: 'text-pink-400' },
+                { icon: Target, title: 'Mission-Driven', desc: 'Focused on delivering measurable business impact', color: 'text-[#fd7200]' },
+                { icon: Lightbulb, title: 'Innovation First', desc: 'Leveraging latest technologies and best practices', color: 'text-amber-500' },
+                { icon: Rocket, title: 'Fast Delivery', desc: 'Agile methodology for rapid, iterative development', color: 'text-[#011f4b]' },
+                { icon: Heart, title: 'Client-Centric', desc: 'Your success is our primary metric', color: 'text-orange-500' },
               ].map((item) => (
                 <TiltCard
                   key={item.title}
@@ -69,10 +69,10 @@ export default function About() {
             className={`relative reveal-right ${rightReveal.isVisible ? 'visible' : ''} lg:ml-10 mt-12 lg:mt-0`}
           >
             {/* Background gradient blob */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-blue-600/20 via-purple-600/10 to-transparent rounded-full blur-3xl animate-morph -z-10" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-[#011f4b]/15 via-[#fd7200]/10 to-transparent rounded-full blur-3xl animate-morph -z-10" />
             
             {/* Main image */}
-            <TiltCard className="w-4/5 h-[320px] sm:h-[400px] rounded-3xl overflow-hidden border border-gray-900/10 shadow-2xl shadow-blue-900/20 relative z-10" intensity={5}>
+            <TiltCard className="w-4/5 h-[320px] sm:h-[400px] rounded-3xl overflow-hidden border border-gray-900/10 shadow-2xl shadow-[#011f4b]/15 relative z-10" intensity={5}>
               <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent z-10" />
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
@@ -83,7 +83,7 @@ export default function About() {
 
             {/* Overlapping secondary image */}
             <TiltCard className="absolute -bottom-12 right-0 sm:-right-4 w-2/3 h-[220px] sm:h-[280px] rounded-3xl overflow-hidden border-[6px] border-gray-950 shadow-2xl z-20" intensity={10}>
-              <div className="absolute inset-0 bg-blue-500/10 z-10 mix-blend-overlay" />
+              <div className="absolute inset-0 bg-[#fd7200]/10 z-10 mix-blend-overlay" />
               <img
                 src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop"
                 alt="Modern workspace"
@@ -92,8 +92,8 @@ export default function About() {
             </TiltCard>
 
             {/* Decorative elements */}
-            <div className="absolute -top-8 right-8 w-24 h-24 bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:8px_8px] rounded-full animate-spin-slow -z-10" />
-            <div className="absolute -bottom-8 left-12 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl -z-10" />
+            <div className="absolute -top-8 right-8 w-24 h-24 bg-[linear-gradient(rgba(1,31,75,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(1,31,75,0.08)_1px,transparent_1px)] bg-[size:8px_8px] rounded-full animate-spin-slow -z-10" />
+            <div className="absolute -bottom-8 left-12 w-32 h-32 bg-[#fd7200]/15 rounded-full blur-2xl -z-10" />
           </div>
         </div>
       </div>

@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-navy: #011f4b;
+  --color-brand-navy-dark: #00122b;
+  --color-brand-navy-light: #0a3678;
+  --color-brand-orange: #fd7200;
+  --color-brand-orange-hover: #e06500;
+  --color-brand-orange-light: #ff881a;
+}
+
 html {
   scroll-behavior: smooth;
   cursor: none;
@@ -25,12 +34,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+  background: linear-gradient(to bottom, #011f4b, #fd7200);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #60a5fa, #a78bfa);
+  background: linear-gradient(to bottom, #0a3678, #ff881a);
 }
 
 /* ===== SCROLL REVEAL ANIMATIONS ===== */
@@ -127,8 +136,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6), 0 0 80px rgba(139, 92, 246, 0.3); }
+  0%, 100% { box-shadow: 0 0 20px rgba(253, 114, 0, 0.3); }
+  50% { box-shadow: 0 0 35px rgba(253, 114, 0, 0.55), 0 0 70px rgba(1, 31, 75, 0.25); }
 }
 
 @keyframes gradient-shift {
@@ -243,12 +252,12 @@ body {
 
 /* Gradient text animation */
 .gradient-text-animated {
-  background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6, #a78bfa, #60a5fa);
+  background: linear-gradient(90deg, #011f4b, #0a3678, #fd7200, #ff881a, #011f4b);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-shift 4s ease infinite;
+  animation: gradient-shift 5s ease infinite;
 }
 
 /* Hover lift effect */
@@ -259,15 +268,15 @@ body {
 
 .hover-lift:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
-              0 0 30px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 20px 40px rgba(1, 31, 75, 0.08),
+              0 0 30px rgba(253, 114, 0, 0.12);
 }
 
 /* Border glow on hover */
 .border-glow:hover {
-  border-color: rgba(59, 130, 246, 0.5);
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15),
-              inset 0 0 20px rgba(59, 130, 246, 0.05);
+  border-color: rgba(253, 114, 0, 0.45);
+  box-shadow: 0 0 20px rgba(253, 114, 0, 0.12),
+              inset 0 0 20px rgba(1, 31, 75, 0.03);
 }
 
 /* No scroll */
