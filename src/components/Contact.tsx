@@ -1,33 +1,46 @@
 import { useState } from 'react';
-import { Mail, MapPin, Phone, Send, CheckCircle } from 'lucide-react';
+import { Send, CheckCircle, Mail, AlertCircle } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import TiltCard from './TiltCard';
+import { useContent } from '../context/ContentContext';
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const { content } = useContent();
+  const { contact } = content;
+  const supportEmail = contact.supportEmail || 'support@reliantsoftwaresolutions.com';
+  const endpoint =
+    contact.formEndpoint || `https://formsubmit.co/ajax/${supportEmail}`;
+
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [ripple, setRipple] = useState<{ x: number; y: number } | null>(null);
   const headerReveal = useScrollReveal({ threshold: 0.2 });
-  const leftReveal = useScrollReveal({ threshold: 0.2 });
   const formReveal = useScrollReveal({ threshold: 0.1 });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setStatus('submitting');
     const form = e.currentTarget;
     const data = new FormData(form);
-    
+
     try {
-      await fetch('https://formspree.io/f/maqrnkqw', {
+      const response = await fetch(endpoint, {
         method: 'POST',
         body: data,
         headers: {
-            'Accept': 'application/json'
-        }
+          Accept: 'application/json',
+        },
       });
-      setSubmitted(true);
-      form.reset();
-      setTimeout(() => setSubmitted(false), 3000);
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.success !== 'false') {
+        setStatus('success');
+        form.reset();
+        setTimeout(() => setStatus('idle'), 4500);
+      } else {
+        setStatus('error');
+      }
     } catch (error) {
       console.error(error);
+      setStatus('error');
     }
   };
 
@@ -54,13 +67,22 @@ export default function Contact() {
           ref={headerReveal.ref}
           className={`text-center mb-16 reveal ${headerReveal.isVisible ? 'visible' : ''}`}
         >
-          <span className="text-[#fd7200] text-sm font-semibold tracking-wider uppercase">Get In Touch</span>
+          <span className="text-[#fd7200] text-sm font-semibold tracking-wider uppercase">{contact.eyebrow}</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mt-3 mb-4">
-            Let's Build <span className="gradient-text-animated">Together</span>
+            {contact.headingRegular} <span className="gradient-text-animated">{contact.headingGradient}</span>
           </h2>
           <p className="max-w-2xl mx-auto text-gray-600 text-lg">
-            Have a project in mind? We'd love to hear about it. Drop us a message and we'll get back within 24 hours.
+            {contact.subtitle}
           </p>
+          <div className="mt-6">
+            <a
+              href={`mailto:${supportEmail}`}
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white border border-slate-200 hover:border-[#fd7200]/50 text-[#011f4b] hover:text-[#fd7200] text-sm font-semibold shadow-xs transition-all duration-200"
+            >
+              <Mail className="w-4 h-4 text-[#fd7200] shrink-0" />
+              <span>{supportEmail}</span>
+            </a>
+          </div>
         </div>
 
         <div
@@ -69,7 +91,28 @@ export default function Contact() {
         >
           <div className="p-8 sm:p-12 rounded-3xl bg-white/70 backdrop-blur-2xl shadow-2xl shadow-gray-200/50 border border-gray-200/50 relative">
             <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/10 rounded-3xl pointer-events-none" />
-            <form onSubmit={handleSubmit} className="relative space-y-8">
+            <form
+              action={`https://formsubmit.co/${supportEmail}`}
+              method="POST"
+              onSubmit={handleSubmit}
+              className="relative space-y-8"
+            >
+              <input type="hidden" name="_subject" value="New Inquiry from Reliant Software Solutions Website" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+
+              {status === 'error' && (
+                <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-start gap-2.5">
+                  <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                  <span>
+                    Something went wrong while sending your message. Please try again or email us directly at{' '}
+                    <a href={`mailto:${supportEmail}`} className="font-semibold underline">
+                      {supportEmail}
+                    </a>
+                    .
+                  </span>
+                </div>
+              )}
               <div className="grid sm:grid-cols-2 gap-8">
                 <div className="group">
                   <label className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-[#011f4b] transition-colors">Full Name</label>
@@ -121,12 +164,12 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                disabled={submitted}
+                disabled={status === 'submitting' || status === 'success'}
                 onClick={handleButtonClick}
                 className={`relative w-full sm:w-auto sm:px-12 flex items-center justify-center gap-3 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-orange-500/20 transition-all duration-300 overflow-hidden magnetic-btn mx-auto ${
-                  submitted
+                  status === 'success'
                     ? 'bg-green-500 text-white scale-[0.98] shadow-green-500/20'
-                    : 'bg-gradient-to-r from-[#fd7200] to-[#e06500] text-white hover:shadow-2xl hover:shadow-orange-500/30 hover:-translate-y-1'
+                    : 'bg-gradient-to-r from-[#fd7200] to-[#e06500] text-white hover:shadow-2xl hover:shadow-orange-500/30 hover:-translate-y-1 disabled:opacity-70'
                 }`}
               >
                 {ripple && (
@@ -142,10 +185,15 @@ export default function Contact() {
                     }}
                   />
                 )}
-                {submitted ? (
+                {status === 'success' ? (
                   <>
                     <CheckCircle className="w-6 h-6 animate-scale-in" />
                     Message Sent Successfully!
+                  </>
+                ) : status === 'submitting' ? (
+                  <>
+                    <Send className="w-6 h-6 animate-pulse" />
+                    Sending...
                   </>
                 ) : (
                   <>

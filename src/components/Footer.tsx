@@ -1,8 +1,12 @@
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Mail } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useContent } from '../context/ContentContext';
 
 export default function Footer() {
   const footerReveal = useScrollReveal({ threshold: 0.1 });
+  const { content } = useContent();
+  const { company, servicesSection, contact } = content;
+  const supportEmail = contact.supportEmail || 'support@reliantsoftwaresolutions.com';
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -20,16 +24,22 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-10">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4 group">
-              <img 
-                src="/logo.png" 
-                alt="Reliant Software Solutions Logo" 
-                className="h-[80px] w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
+              <img
+                src="/logo.png"
+                alt={`${company.name} Logo`}
+                className="h-[80px] w-auto object-contain group-hover:scale-105 transition-transform duration-300"
               />
             </div>
             <p className="text-gray-600 max-w-sm leading-relaxed">
-              Transforming ideas into powerful software solutions. We build scalable,
-              secure, and innovative digital products for businesses worldwide.
+              {company.tagline}
             </p>
+            <a
+              href={`mailto:${supportEmail}`}
+              className="inline-flex items-center gap-2 mt-4 text-sm font-semibold text-[#011f4b] hover:text-[#fd7200] transition-colors duration-200"
+            >
+              <Mail className="w-4 h-4 text-[#fd7200] shrink-0" />
+              <span>{supportEmail}</span>
+            </a>
           </div>
           <div>
             <h4 className="text-gray-900 font-semibold mb-4">Quick Links</h4>
@@ -48,31 +58,40 @@ export default function Footer() {
           <div>
             <h4 className="text-gray-900 font-semibold mb-4">Services</h4>
             <div className="space-y-2">
-              {['Web Development', 'Mobile Apps', 'Cloud Solutions', 'AI & ML', 'MVP Development'].map((s) => (
-                <span
-                  key={s}
-                  className="block text-gray-600 text-sm hover:text-gray-900 transition-colors duration-300"
+              {servicesSection.items.slice(0, 5).map((s) => (
+                <a
+                  key={s.id}
+                  href="#services"
+                  className="block text-gray-600 text-sm hover:text-[#fd7200] transition-colors duration-300"
                 >
-                  {s}
-                </span>
+                  {s.title}
+                </a>
               ))}
             </div>
           </div>
         </div>
         <div className="border-t border-gray-200 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Reliant Software Solutions. All rights reserved.
+            © {company.copyrightYear || new Date().getFullYear()} {company.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            {['Privacy Policy', 'Terms of Service'].map((item) => (
-              <a key={item} href="#" className="text-gray-500 hover:text-gray-700 text-sm transition-colors duration-300">
-                {item}
-              </a>
-            ))}
+            <a
+              href={company.privacyUrl || '#'}
+              className="text-gray-500 hover:text-gray-700 text-sm transition-colors duration-300"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href={company.termsUrl || '#'}
+              className="text-gray-500 hover:text-gray-700 text-sm transition-colors duration-300"
+            >
+              Terms of Service
+            </a>
             {/* Scroll to top button */}
             <button
               onClick={scrollToTop}
               className="w-10 h-10 rounded-full bg-gray-900/5 border border-gray-900/10 flex items-center justify-center text-gray-600 hover:text-[#fd7200] hover:bg-orange-500/10 hover:border-[#fd7200]/30 hover:-translate-y-1 transition-all duration-300 magnetic-btn"
+              aria-label="Scroll to top"
             >
               <ArrowUp className="w-4 h-4" />
             </button>

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useContent } from '../context/ContentContext';
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
+  const { content } = useContent();
+  const { hero } = content;
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 100);
@@ -52,7 +54,7 @@ export default function Hero() {
           >
             <Sparkles className="w-4 h-4 animate-wiggle text-[#fd7200]" />
             <span className="relative overflow-hidden font-medium">
-              Trusted by 50+ Companies Worldwide
+              {hero.badge}
               {/* Shimmer effect */}
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-400/20 to-transparent animate-shimmer" />
             </span>
@@ -64,10 +66,10 @@ export default function Hero() {
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            We Build Software
+            {hero.titleRegular}
             <br />
             <span className="gradient-text-animated">
-              That Drives Growth
+              {hero.titleGradient}
             </span>
           </h1>
 
@@ -77,8 +79,7 @@ export default function Hero() {
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            Reliant Software Solutions transforms your ideas into powerful, scalable software products.
-            From MVPs to enterprise solutions — we deliver excellence at every stage.
+            {hero.subtitle}
           </p>
 
           {/* CTA Buttons */}
@@ -88,21 +89,21 @@ export default function Hero() {
             }`}
           >
             <a
-              href="#products"
+              href={hero.primaryCtaLink || '#products'}
               className="magnetic-btn group relative flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#fd7200] to-[#e06500] text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-orange-500/30 transition-all hover:-translate-y-1 animate-pulse-glow overflow-hidden"
             >
               {/* Button shimmer */}
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
               <span className="relative flex items-center gap-2">
-                View Our Work
+                {hero.primaryCtaText}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </a>
             <a
-              href="#contact"
+              href={hero.secondaryCtaLink || '#contact'}
               className="magnetic-btn group flex items-center gap-2 px-8 py-4 border border-gray-300 text-[#011f4b] font-semibold rounded-xl hover:border-[#011f4b]/40 hover:bg-[#011f4b]/5 transition-all hover:-translate-y-1"
             >
-              Get In Touch
+              {hero.secondaryCtaText}
             </a>
           </div>
 

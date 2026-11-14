@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useContent } from '../context/ContentContext';
 
 export default function Navbar() {
+  const { content } = useContent();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -50,7 +52,7 @@ export default function Navbar() {
           <a href="#home" className="flex items-center gap-2 group">
             <img 
               src="/logo.png" 
-              alt="Reliant Software Solutions Logo" 
+              alt={`${content.company.name} Logo`} 
               className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
             />
           </a>

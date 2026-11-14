@@ -1,11 +1,14 @@
-import { Target, Lightbulb, Rocket, Heart } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useContent } from '../context/ContentContext';
+import { DynamicIcon } from '../utils/iconMap';
 import TiltCard from './TiltCard';
 
 export default function About() {
   const leftReveal = useScrollReveal({ threshold: 0.2 });
   const rightReveal = useScrollReveal({ threshold: 0.2 });
   const valuesReveal = useScrollReveal({ threshold: 0.2 });
+  const { content } = useContent();
+  const { about } = content;
 
   return (
     <section id="about" className="py-24 bg-white relative overflow-hidden">
@@ -22,21 +25,19 @@ export default function About() {
             ref={leftReveal.ref}
             className={`reveal-left ${leftReveal.isVisible ? 'visible' : ''}`}
           >
-            <span className="text-[#fd7200] text-sm font-semibold tracking-wider uppercase">About Us</span>
+            <span className="text-[#fd7200] text-sm font-semibold tracking-wider uppercase">
+              {about.badge}
+            </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mt-3 mb-6">
-              Building the Future,
+              {about.headingRegular}
               <br />
-              <span className="gradient-text-animated">One Line at a Time</span>
+              <span className="gradient-text-animated">{about.headingGradient}</span>
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Reliant Software Solutions is a forward-thinking software development company founded in 2019.
-              We specialize in turning ambitious ideas into reality through cutting-edge technology
-              and exceptional engineering talent.
+              {about.paragraph1}
             </p>
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Our team of 40+ skilled developers, designers, and strategists has successfully
-              delivered 50+ projects across healthcare, fintech, e-commerce, education, and IoT
-              sectors. We pride ourselves on building long-term partnerships with our clients.
+              {about.paragraph2}
             </p>
 
             {/* Values grid */}
@@ -44,18 +45,16 @@ export default function About() {
               ref={valuesReveal.ref}
               className={`grid grid-cols-2 gap-4 stagger-children ${valuesReveal.isVisible ? 'visible' : ''}`}
             >
-              {[
-                { icon: Target, title: 'Mission-Driven', desc: 'Focused on delivering measurable business impact', color: 'text-[#fd7200]' },
-                { icon: Lightbulb, title: 'Innovation First', desc: 'Leveraging latest technologies and best practices', color: 'text-amber-500' },
-                { icon: Rocket, title: 'Fast Delivery', desc: 'Agile methodology for rapid, iterative development', color: 'text-[#011f4b]' },
-                { icon: Heart, title: 'Client-Centric', desc: 'Your success is our primary metric', color: 'text-orange-500' },
-              ].map((item) => (
+              {about.values.map((item) => (
                 <TiltCard
-                  key={item.title}
+                  key={item.id}
                   className="p-4 rounded-xl bg-white/[0.03] border border-gray-900/10 hover-lift border-glow transition-all duration-300 group"
                   intensity={12}
                 >
-                  <item.icon className={`w-6 h-6 ${item.color} mb-2 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`} />
+                  <DynamicIcon
+                    name={item.iconName}
+                    className={`w-6 h-6 ${item.color} mb-2 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`}
+                  />
                   <h4 className="text-gray-900 font-semibold text-sm mb-1">{item.title}</h4>
                   <p className="text-gray-500 text-xs">{item.desc}</p>
                 </TiltCard>
@@ -70,24 +69,23 @@ export default function About() {
           >
             {/* Background gradient blob */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-[#011f4b]/15 via-[#fd7200]/10 to-transparent rounded-full blur-3xl animate-morph -z-10" />
-            
+
             {/* Main image */}
             <TiltCard className="w-4/5 h-[320px] sm:h-[400px] rounded-3xl overflow-hidden border border-gray-900/10 shadow-2xl shadow-[#011f4b]/15 relative z-10" intensity={5}>
               <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent z-10" />
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
+                src={about.primaryImage}
                 alt="Team collaboration"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
               />
             </TiltCard>
 
             {/* Overlapping secondary image */}
-            <TiltCard className="absolute -bottom-12 right-0 sm:-right-4 w-2/3 h-[220px] sm:h-[280px] rounded-3xl overflow-hidden border-[6px] border-gray-950 shadow-2xl z-20" intensity={10}>
-              <div className="absolute inset-0 bg-[#fd7200]/10 z-10 mix-blend-overlay" />
+            <TiltCard className="absolute -bottom-12 right-0 sm:-right-4 w-2/3 h-[220px] sm:h-[280px] rounded-3xl overflow-hidden border-[6px] border-white ring-1 ring-slate-200/80 shadow-2xl shadow-[#011f4b]/15 z-20" intensity={10}>
               <img
-                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop"
-                alt="Modern workspace"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                src={about.secondaryImage}
+                alt="Modern software engineering team workspace"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </TiltCard>
 

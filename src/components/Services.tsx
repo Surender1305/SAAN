@@ -1,55 +1,13 @@
-import { Globe, Smartphone, Cloud, Brain, Shield, Gauge } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import TiltCard from './TiltCard';
-
-const services = [
-  {
-    icon: Globe,
-    title: 'Web Development',
-    description: 'Full-stack web applications built with modern frameworks like React, Next.js, and Node.js. Scalable, fast, and secure.',
-    color: 'from-[#011f4b] to-[#0a3678]',
-    shadowColor: 'shadow-[#011f4b]/20',
-  },
-  {
-    icon: Smartphone,
-    title: 'Mobile Apps',
-    description: 'Cross-platform mobile applications using React Native and Flutter. Native performance with a single codebase.',
-    color: 'from-[#fd7200] to-[#e06500]',
-    shadowColor: 'shadow-orange-500/20',
-  },
-  {
-    icon: Cloud,
-    title: 'Cloud Solutions',
-    description: 'Cloud architecture design, migration, and DevOps. AWS, Azure, and GCP certified team ensuring 99.9% uptime.',
-    color: 'from-[#0a3678] to-[#155e75]',
-    shadowColor: 'shadow-blue-900/20',
-  },
-  {
-    icon: Brain,
-    title: 'AI & ML Solutions',
-    description: 'Intelligent automation, predictive analytics, NLP, and computer vision solutions tailored to your business needs.',
-    color: 'from-[#e06500] to-[#fd7200]',
-    shadowColor: 'shadow-orange-500/20',
-  },
-  {
-    icon: Shield,
-    title: 'Cybersecurity',
-    description: 'Comprehensive security audits, penetration testing, and compliance solutions. Protect your digital assets.',
-    color: 'from-[#011f4b] to-[#0f2c59]',
-    shadowColor: 'shadow-[#011f4b]/20',
-  },
-  {
-    icon: Gauge,
-    title: 'MVP Development',
-    description: 'Rapid prototyping and MVP development to validate your ideas fast. Go from concept to market in weeks, not months.',
-    color: 'from-[#ff881a] to-[#fd7200]',
-    shadowColor: 'shadow-orange-500/20',
-  },
-];
+import { useContent } from '../context/ContentContext';
+import { DynamicIcon } from '../utils/iconMap';
 
 export default function Services() {
   const headerReveal = useScrollReveal({ threshold: 0.2 });
   const gridReveal = useScrollReveal({ threshold: 0.1 });
+  const { content } = useContent();
+  const { servicesSection } = content;
 
   return (
     <section id="services" className="py-24 bg-white relative overflow-hidden">
@@ -66,13 +24,14 @@ export default function Services() {
           className={`text-center mb-16 reveal ${headerReveal.isVisible ? 'visible' : ''}`}
         >
           <span className="text-[#fd7200] text-sm font-semibold tracking-wider uppercase inline-block">
-            What We Offer
+            {servicesSection.eyebrow}
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mt-3 mb-4">
-            Our <span className="gradient-text-animated">Services</span>
+            {servicesSection.headingRegular}{' '}
+            <span className="gradient-text-animated">{servicesSection.headingGradient}</span>
           </h2>
           <p className="max-w-2xl mx-auto text-gray-600 text-lg">
-            End-to-end software solutions designed to accelerate your business growth and digital transformation.
+            {servicesSection.subtitle}
           </p>
         </div>
 
@@ -81,16 +40,16 @@ export default function Services() {
           ref={gridReveal.ref}
           className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children ${gridReveal.isVisible ? 'visible' : ''}`}
         >
-          {services.map((service) => (
+          {servicesSection.items.map((service) => (
             <TiltCard
-              key={service.title}
-              className={`group p-8 rounded-2xl bg-white/[0.03] border border-gray-900/10 hover:border-[#fd7200]/30 hover:bg-white/[0.06] transition-all duration-300 hover-lift border-glow`}
+              key={service.id}
+              className="group p-8 rounded-2xl bg-white/[0.03] border border-gray-900/10 hover:border-[#fd7200]/30 hover:bg-white/[0.06] transition-all duration-300 hover-lift border-glow"
               intensity={8}
             >
               <div
                 className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg ${service.shadowColor}`}
               >
-                <service.icon className="w-7 h-7 text-white" />
+                <DynamicIcon name={service.iconName} className="w-7 h-7 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#fd7200] transition-colors duration-300">
                 {service.title}

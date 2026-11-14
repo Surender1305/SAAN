@@ -1,21 +1,21 @@
-Write-Host "Updating Mobi Asset (DeviceManager)..." -ForegroundColor Cyan
-Set-Location "..\DeviceManagerProductWebsite-main"
+Write-Host "Updating Mobi Asset..." -ForegroundColor Cyan
+Set-Location "..\MobiAssetProductWebsite"
 npm run build
 Copy-Item "dist\index.html" "..\CompanyWebsite-main\public\DeviceManagerProductWebsite-main\index.html" -Force
 if (Test-Path "public\logo.png") {
     Copy-Item "public\logo.png" "..\CompanyWebsite-main\public\DeviceManagerProductWebsite-main\logo.png" -Force
 }
 
-Write-Host "Updating Inspectra (SafetyMonitor)..." -ForegroundColor Cyan
-Set-Location "..\SafetyMonitorProductWebsite-main"
+Write-Host "Updating Inspectra..." -ForegroundColor Cyan
+Set-Location "..\InspectraProductWebsite"
 npm run build
 Copy-Item "dist\index.html" "..\CompanyWebsite-main\public\SafetyMonitorProductWebsite-main\index.html" -Force
 if (Test-Path "public\logo.png") {
     Copy-Item "public\logo.png" "..\CompanyWebsite-main\public\SafetyMonitorProductWebsite-main\logo.png" -Force
 }
 
-Write-Host "Updating Asset Guard (AssetManager)..." -ForegroundColor Cyan
-Set-Location "..\AssetManagerProductWebsite-main"
+Write-Host "Updating Asset Guard..." -ForegroundColor Cyan
+Set-Location "..\AssetGuardProductWebsite"
 npm run build
 Copy-Item "dist\index.html" "..\CompanyWebsite-main\public\AssetManagerProductWebsite-main\index.html" -Force
 if (Test-Path "public\logo.png") {

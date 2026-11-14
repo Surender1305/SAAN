@@ -69,40 +69,22 @@ export default function MouseFollower() {
 
   return (
     <>
-      {/* Main cursor dot */}
+      {/* Subtle trailing ring */}
       <div
-        className="fixed pointer-events-none z-[9999] mix-blend-difference"
-        style={{
-          left: position.x,
-          top: position.y,
-          transform: `translate(-50%, -50%) scale(${isClicking ? 0.5 : isHovering ? 2.5 : 1})`,
-          transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-        }}
-      >
-        <div
-          className={`w-4 h-4 rounded-full bg-white ${isHovering ? 'opacity-80' : 'opacity-100'}`}
-          style={{
-            transition: 'opacity 0.3s',
-          }}
-        />
-      </div>
-
-      {/* Trailing glow ring */}
-      <div
-        className="fixed pointer-events-none z-[9998]"
+        className="fixed pointer-events-none z-[9998] hidden md:block"
         style={{
           left: trailPosition.x,
           top: trailPosition.y,
-          transform: `translate(-50%, -50%) scale(${isClicking ? 0.8 : isHovering ? 1.8 : 1})`,
-          transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+          transform: `translate(-50%, -50%) scale(${isClicking ? 0.85 : isHovering ? 1.35 : 1})`,
+          transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
       >
-        <div className="w-10 h-10 rounded-full border border-[#fd7200]/60" />
+        <div className="w-8 h-8 rounded-full border border-[#fd7200]/35 bg-[#fd7200]/[0.03]" />
       </div>
 
-      {/* Outer glow aura */}
+      {/* Soft ambient aura behind cursor */}
       <div
-        className="fixed pointer-events-none z-[9997]"
+        className="fixed pointer-events-none z-[9997] hidden md:block"
         style={{
           left: trailPosition.x,
           top: trailPosition.y,
@@ -110,9 +92,9 @@ export default function MouseFollower() {
         }}
       >
         <div
-          className="w-[300px] h-[300px] rounded-full opacity-[0.08]"
+          className="w-[240px] h-[240px] rounded-full opacity-[0.06]"
           style={{
-            background: 'radial-gradient(circle, rgba(253,114,0,0.85) 0%, rgba(1,31,75,0.45) 45%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(253,114,0,0.75) 0%, rgba(1,31,75,0.35) 45%, transparent 70%)',
           }}
         />
       </div>
